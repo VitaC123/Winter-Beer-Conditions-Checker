@@ -3,15 +3,15 @@
 (function() {
   $(".questionBtn").click(function() {
     $(".introText").slideUp();
-    $(this).html('Checking beer conditions').blur();
-    checkBeerConditions();
+    $(this).hide();
+    $(".checkingWinterBeerConditions").fadeIn(1200);
+    determineLocationWeatherAndRunChecks();
   });
 
-  function checkBeerConditions() {
+  function determineLocationWeatherAndRunChecks() {
     $.getJSON("http://ip-api.com/json", function determineUserLocationForWeather(ipLocation) {
       var zip = ipLocation.zip;
       var country = ipLocation.countryCode;
-
       var weatherAPI = "http://api.openweathermap.org/data/2.5/weather?zip={" + zip + "},{" + country + "}";
       var userKey = "&units=imperial&appid=20573b9a59a767f17aff8a87788ab6b9";
       $.getJSON(weatherAPI + userKey, function queryLocalWeather(weatherData) {
@@ -33,17 +33,22 @@
       });
     });
   }
-
+  
+  var qualifiersCount = 0;
   var date = new Date();
+
   function seasonCheck(callback) {
     var month = date.getMonth() + 1;
-    var conditionMet = month >= 10 || month === 1; // Snow Cap is in season October through January
+    var conditionMet = month >= 10 || month === 1;
+    if (!conditionMet) {
+      qualifiersCount -= 1; // Ensures beer is in season for a "yes" answer
+    }
     styleQualifier("season", conditionMet, callback);
   }
 
   function afterFiveCheck(callback) {
     var hours = date.getHours();
-    var conditionMet = hours >= 17 || hours < 3; // Drinking time will be 5pm through 2:59am
+    var conditionMet = hours >= 17 || hours < 3;
     styleQualifier("afterFive", conditionMet, callback);
   }
 
@@ -58,12 +63,12 @@
   }
 
   function determineAnswer() {
-    $(".questionBtn").hide();
-    if (qualifiersCount === 3) {
+    $(".checkingWinterBeerConditions").hide();
+    if (qualifiersCount >= 3) {
       $(".answer").html("The answer is yes!");
-      $(".appText").addClass("textMoveLeft");
-      $(".bottle").css("left", "50%"); // Moves bottle onto screen
-      if (qualifiersCount > 3) {
+      $(".afterIntroText").css("width", "60%");
+      $(".bottle").show().animate({"left": "0%"}, "slow");
+      if (qualifiersCount === 4) {
         $(".answer").html("Why hell yes.<br>In fact, drink two!");
       }
     } else {
@@ -71,18 +76,17 @@
       displayScrewItBtn();
     }
   }
-
+  
   function displayScrewItBtn() {
-    $(".answer").append("<br><button class='screwItBtn'>Screw it, beer me!</button>");
-    $(".bottle").css("top", "6em");
+    $(".screwItBtn").show();
     $(".screwItBtn").click(function() {
       $(".answer").html("Happy Winter!");
+      $(".bottle").css("width", "100%");
+      $(".bottle").show().animate({"left": "0%"}, "slow");
       $(".allQualifiers").hide();
-      $(".bottle").css("left", "40%");
+      $(".screwItBtn").hide();
     });
   }
-
-  var qualifiersCount = 0;
 
   function styleQualifier(qualifier, conditionMet, callback) {
     $("." + qualifier).prepend('<i class="' + qualifier + 'Fa fa fa-snowflake-o fa-spin" aria-hidden="true"></i> ');
