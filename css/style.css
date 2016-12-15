@@ -1,9 +1,9 @@
 /* height × width / margin / padding / border / background / font*/
 
 body {
-  min-width: 344px;
-  margin: 2em;
-  background: linear-gradient(to right, #12351f, #0c2215);
+  min-width: 650px;
+  margin: 1em;
+  background: #12351f;
   text-align: center;
   font-size: 16px;
   font-family: georgia, times;
@@ -41,12 +41,16 @@ ul {
   background: #b17625;
 }
 
+.textMoveLeft {
+  position: relative;
+  left: -10em;
+}
+
 /* Bottle is above screen until qualifiersCount is >= 2 */
 .bottle {
-  margin-left:-136px;
   position: relative;
-  top: -60em;
-  left: 50%;
+  top: -26em;
+  left: 130%;
   transition: 1s;
 }
 
