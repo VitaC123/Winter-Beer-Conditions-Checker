@@ -3,11 +3,18 @@
 body {
   min-width: 650px;
   margin: 1em;
+  padding: 3em;
   background: #12351f;
   text-align: center;
   font-size: 16px;
   font-family: georgia, times;
   color: #e5982e;
+}
+
+.introText {
+  width: 20em;
+  margin: auto;
+  font-size: 1.5em;
 }
 
 h1 {
@@ -23,22 +30,26 @@ ul {
 .allQualifiers {
   margin: 1em;
   padding: 0.25em;
-  text-decoration: line-through;
-  opacity: 0.4;
+  display: none;
 }
 
-.screwItBtn {
+button {
   margin-top: 2em;
   padding: 0.75em;
   border-style: none;
   border-radius: 0.5em;
   background: #e5982e;
-  font-size: 0.4em;
+  font-size: 0.5em;
   color: #12351f;
 }
 
-.screwItBtn:hover {
-  background: #b17625;
+button:hover {
+  background: #fca836;
+}
+
+.questionBtn {
+  font-family: georgia, times;
+  font-size: 1em;
 }
 
 .textMoveLeft {
@@ -48,10 +59,15 @@ ul {
 
 /* Bottle is above screen until qualifiersCount is >= 2 */
 .bottle {
-  position: relative;
-  top: -26em;
+  position: fixed;
+  top: -2em;
   left: 130%;
   transition: 1s;
+}
+
+.bottle:hover {
+  top: -3em;
+  transform:scale(1.15,1.15);
 }
 
 /* Bottle is represented/numbered here from top to bottom */
@@ -83,7 +99,7 @@ ul {
   width: 60px;
   border-bottom-left-radius: 14px;
   border-bottom-right-radius: 14px;
-  top: 81px;
+  top: 80px;
   left: 103px;
 }
 
@@ -208,6 +224,7 @@ ul {
   padding: 2px 15px 2px 15px;
   top: 378px;
   left: 74px;
+  position: relative;
   background: linear-gradient(to right, #770c16, #d61a33, #5b000b);
   font-size: 1.06em;
   color: #d3c7af;
