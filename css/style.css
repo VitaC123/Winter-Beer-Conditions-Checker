@@ -1,0 +1,227 @@
+/* height × width / margin / padding / border / background / font*/
+
+body {
+  min-width: 344px;
+  margin: 2em;
+  background: linear-gradient(to right, #12351f, #0c2215);
+  text-align: center;
+  font-size: 16px;
+  font-family: georgia, times;
+  color: #e5982e;
+}
+
+h1 {
+  letter-spacing: 0.05em;
+}
+
+ul {
+  margin-left: -2.3em;
+  list-style-type: none;
+  font-size: 1.5em;
+}
+
+.allQualifiers {
+  margin: 1em;
+  padding: 0.25em;
+  text-decoration: line-through;
+  opacity: 0.4;
+}
+
+.screwItBtn {
+  margin-top: 2em;
+  padding: 0.75em;
+  border-style: none;
+  border-radius: 0.5em;
+  background: #e5982e;
+  font-size: 0.4em;
+  color: #12351f;
+}
+
+.screwItBtn:hover {
+  background: #b17625;
+}
+
+/* Bottle is above screen until qualifiersCount is >= 2 */
+.bottle {
+  margin-left:-136px;
+  position: relative;
+  top: -60em;
+  left: 50%;
+  transition: 1s;
+}
+
+/* Bottle is represented/numbered here from top to bottom */
+.btl {
+  position: absolute;
+  background: linear-gradient(to right, #111111, #562403, #0c0b10);
+}
+
+.bottleTop1 {
+  height: 5px;
+  width: 54px;
+  border-radius: 2px;
+  border-radius: 2px;
+  top: 61px;
+  left: 106px;
+}
+
+.bottleTop2 {
+  height: 16px;
+  width: 60px;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  top: 65px;
+  left: 103px;
+}
+
+.bottleTop3 {
+  height: 8px;
+  width: 60px;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  top: 81px;
+  left: 103px;
+}
+
+.bottleTop4 {
+  height: 17px;
+  width: 51px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  top: 87px;
+  left: 108px;
+}
+
+.line {
+  background: #d3c7af;
+}
+
+.whiteLine1 {
+  height: 4px;
+  width: 51px;
+  border-radius: 1px;
+  top: 104px;
+  left: 108px;
+}
+
+.labelBG {
+  background: linear-gradient(to right, #0c2706, #094306, #0c2706);
+}
+
+.topLabel1 {
+  height: 13px;
+  width: 56px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  top: 108px;
+  left: 105px;
+}
+
+.topLabel2 {
+  height: 46px;
+  width: 68px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  top: 109px;
+  left: 99px;
+}
+
+.whiteLine2 {
+  height: 4px;
+  width: 68px;
+  border-radius: 1px;
+  top: 155px;
+  left: 99px;
+}
+
+.neck1 {
+  height: 45px;
+  width: 87px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  top: 158px;
+  left: 90px;
+}
+
+.neck2 {
+  height: 20px;
+  width: 101px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  top: 198px;
+  left: 83px;
+}
+
+.neck3 {
+  height: 45px;
+  width: 140px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  top: 216px;
+  left: 64px;
+}
+
+.whiteLine3 {
+  height: 6px;
+  width: 140px;
+  border-radius: 0px;
+  top: 261px;
+  left: 64px;
+}
+
+.mainLabel {
+  height: 168px;
+  width: 140px;
+  border-radius: 2px;
+  top: 267px;
+  left: 64px;
+}
+
+.labelCircle1 {
+  height: 146px;
+  width: 109px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 42px;
+  border-color: #dcca82;
+  left: 78px;
+  top: 270px;
+}
+
+.labelCircle2 {
+  height: 142px;
+  width: 105px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 40px;
+  border-color: #ad9056;
+  left: 80px;
+  top: 272px;
+  background: #eaeac4;
+}
+
+.title {
+  padding: 2px 15px 2px 15px;
+  top: 378px;
+  left: 74px;
+  background: linear-gradient(to right, #770c16, #d61a33, #5b000b);
+  font-size: 1.06em;
+  color: #d3c7af;
+}
+
+.whiteLine4 {
+  height: 6px;
+  width: 140px;
+  top: 434px;
+  left: 64px;
+}
+
+.bottleBtm {
+  height: 39px;
+  width: 140px;
+  border-bottom-left-radius: 19px;
+  border-bottom-right-radius: 19px;
+  top: 440px;
+  left: 64px;
+  background: linear-gradient(to right, #313541, #562403, #0f0f0f);
+}
