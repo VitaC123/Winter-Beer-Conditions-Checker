@@ -1,9 +1,10 @@
 /* height × width / margin / padding / border / background / font*/
 
 body {
-  min-width: 650px;
-  margin: 1em;
-  padding: 3em;
+  max-width: 700px;
+  min-width: 330px;
+  margin: auto;
+  padding: 0.75em;
   background: #12351f;
   text-align: center;
   font-size: 16px;
@@ -12,25 +13,23 @@ body {
 }
 
 .introText {
-  width: 20em;
+  width: 80%;
   margin: auto;
   font-size: 1.5em;
 }
 
-h1 {
-  letter-spacing: 0.05em;
-}
-
-ul {
-  margin-left: -2.3em;
-  list-style-type: none;
-  font-size: 1.5em;
+.checkingWinterBeerConditions {
+  display: none;
+  margin: auto;
+  width: 90%;
 }
 
 .allQualifiers {
-  margin: 1em;
-  padding: 0.25em;
   display: none;
+  margin: 1em 0em 0em -2.3em;
+  padding: 0.25em;
+  list-style-type: none;
+  font-size: 1.5em;
 }
 
 button {
@@ -39,7 +38,8 @@ button {
   border-style: none;
   border-radius: 0.5em;
   background: #e5982e;
-  font-size: 0.5em;
+  font-size: 1em;
+  font-family: georgia, times;
   color: #12351f;
 }
 
@@ -47,42 +47,46 @@ button:hover {
   background: #fca836;
 }
 
-.questionBtn {
-  font-family: georgia, times;
-  font-size: 1em;
+.screwItBtn {
+  display: none;
 }
 
-.textMoveLeft {
-  position: relative;
-  left: -10em;
+.answer {
+  letter-spacing: 0.05em;
 }
 
-/* Bottle is above screen until qualifiersCount is >= 2 */
+.afterIntroText {
+  float: left;
+  width: 100%;
+}
+
 .bottle {
-  position: fixed;
-  top: -2em;
-  left: 130%;
+  display: none;
+  position: relative;
+  float: right;
+  width: 40%;
+  left: -150%;
   transition: 1s;
 }
 
 .bottle:hover {
-  top: -3em;
-  transform:scale(1.15,1.15);
+  transform: rotate(-0.05turn);
 }
 
 /* Bottle is represented/numbered here from top to bottom */
+
 .btl {
-  position: absolute;
+  position: relative;
+  margin: auto;
   background: linear-gradient(to right, #111111, #562403, #0c0b10);
 }
 
 .bottleTop1 {
   height: 5px;
   width: 54px;
+  margin-bottom: -1px;
   border-radius: 2px;
   border-radius: 2px;
-  top: 61px;
-  left: 106px;
 }
 
 .bottleTop2 {
@@ -90,17 +94,15 @@ button:hover {
   width: 60px;
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
-  top: 65px;
-  left: 103px;
 }
 
 .bottleTop3 {
   height: 8px;
   width: 60px;
+  top: -1px;
+  margin-bottom: -2px;
   border-bottom-left-radius: 14px;
   border-bottom-right-radius: 14px;
-  top: 80px;
-  left: 103px;
 }
 
 .bottleTop4 {
@@ -108,8 +110,6 @@ button:hover {
   width: 51px;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
-  top: 87px;
-  left: 108px;
 }
 
 .line {
@@ -120,8 +120,6 @@ button:hover {
   height: 4px;
   width: 51px;
   border-radius: 1px;
-  top: 104px;
-  left: 108px;
 }
 
 .labelBG {
@@ -133,25 +131,21 @@ button:hover {
   width: 56px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  top: 108px;
-  left: 105px;
 }
 
 .topLabel2 {
   height: 46px;
   width: 68px;
+  margin-bottom: -12px;
+  top: -12px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  top: 109px;
-  left: 99px;
 }
 
 .whiteLine2 {
   height: 4px;
   width: 68px;
   border-radius: 1px;
-  top: 155px;
-  left: 99px;
 }
 
 .neck1 {
@@ -159,82 +153,77 @@ button:hover {
   width: 87px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  top: 158px;
-  left: 90px;
 }
 
 .neck2 {
   height: 20px;
   width: 101px;
+  margin-bottom: -5px;
+  top: -5px;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
-  top: 198px;
-  left: 83px;
 }
 
 .neck3 {
   height: 45px;
   width: 140px;
+  margin-bottom: -3px;
+  top: -3px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  top: 216px;
-  left: 64px;
 }
 
 .whiteLine3 {
   height: 6px;
   width: 140px;
   border-radius: 0px;
-  top: 261px;
-  left: 64px;
 }
 
 .mainLabel {
   height: 168px;
   width: 140px;
   border-radius: 2px;
-  top: 267px;
-  left: 64px;
 }
 
 .labelCircle1 {
   height: 146px;
   width: 109px;
+  margin-bottom: -164px;
+  top: -164px;
   border-style: solid;
   border-width: 2px;
   border-radius: 42px;
   border-color: #dcca82;
-  left: 78px;
-  top: 270px;
+
 }
 
 .labelCircle2 {
   height: 142px;
   width: 105px;
+  margin-bottom: -144px;
+  top: -144px;
   border-style: solid;
   border-width: 2px;
   border-radius: 40px;
   border-color: #ad9056;
-  left: 80px;
-  top: 272px;
   background: #eaeac4;
 }
 
 .title {
+  top: -40px;
+  width: 110px;
   padding: 2px 15px 2px 15px;
-  top: 378px;
-  left: 74px;
   position: relative;
   background: linear-gradient(to right, #770c16, #d61a33, #5b000b);
-  font-size: 1.06em;
+  font-size: 16.5px;
   color: #d3c7af;
 }
 
 .whiteLine4 {
   height: 6px;
   width: 140px;
-  top: 434px;
-  left: 64px;
+  margin-bottom: -8px;
+  top: -8px;
 }
 
 .bottleBtm {
@@ -242,7 +231,5 @@ button:hover {
   width: 140px;
   border-bottom-left-radius: 19px;
   border-bottom-right-radius: 19px;
-  top: 440px;
-  left: 64px;
   background: linear-gradient(to right, #313541, #562403, #0f0f0f);
 }
