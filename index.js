@@ -1,39 +1,49 @@
-"use strict";
+(function () {
+  "use strict";
 
-(function() {
-  $(".questionBtn").click(function() {
+  $(".questionBtn").click(function () {
     $(".introText").slideUp();
     $(this).hide();
     $(".checkingWinterBeerConditions").fadeIn(1200);
-    determineLocationWeatherAndRunChecks();
+    determineLocation();
   });
 
-  function determineLocationWeatherAndRunChecks() {
-    $.getJSON("http://ip-api.com/json", function determineUserLocationForWeather(ipLocation) {
-      var zip = ipLocation.zip;
-      var country = ipLocation.countryCode;
-      var weatherAPI = "http://api.openweathermap.org/data/2.5/weather?zip={" + zip + "},{" + country + "}";
-      var userKey = "&units=imperial&appid=20573b9a59a767f17aff8a87788ab6b9";
-      $.getJSON(weatherAPI + userKey, function queryLocalWeather(weatherData) {
-        var weatherDescription = weatherData.weather[0].description;
-        var temperature = weatherData.main.temp.toFixed();
-        runEachCheckSequentially(temperature, weatherDescription);
+  function determineLocation() {
+    $.getJSON("http://ip-api.com/json")
+      .done(function (ipLocation) {
+        determineWeather(ipLocation.zip, ipLocation.countryCode);
+      })
+      .fail(function () {
+        console.log("Unable to determine location. Continuing program for demonstration purposes.");
+        determineWeather(97206, "US");
       });
-    });
+  }
+
+  function determineWeather(zip, country) {
+    var weatherAPI = "http://api.openweathermap.org/data/2.5/weather?zip={" + zip + "},{" + country + "}";
+    var userKey = "&units=imperial&appid=0f3a5dd0d9770b5bd04f4b7b47819d10";
+    $.getJSON(weatherAPI + userKey)
+      .done(function queryLocalWeather(weatherData) {
+        runEachCheckSequentially(weatherData.main.temp.toFixed(), weatherData.weather[0].description);
+      })
+      .fail(function () {
+        console.log("Unable to determine weather. Continuing program for demonstration purposes.");
+        runEachCheckSequentially(50, "");
+      });
   }
 
   function runEachCheckSequentially(temperature, weatherDescription) {
-    seasonCheck(function() {
-      afterFiveCheck(function() {
-        coldOutsideCheck(temperature, function() {
-          snowBonusCheck(weatherDescription, function() {
+    seasonCheck(function () {
+      afterFiveCheck(function () {
+        coldOutsideCheck(temperature, function () {
+          snowBonusCheck(weatherDescription, function () {
             determineAnswer();
           });
         });
       });
     });
   }
-  
+
   var qualifiersCount = 0;
   var date = new Date();
 
@@ -67,7 +77,7 @@
     if (qualifiersCount >= 3) {
       $(".answer").html("The answer is yes!");
       $(".afterIntroText").css("width", "60%");
-      $(".bottle").show().animate({"left": "0%"}, "slow");
+      $(".bottle").show().animate({ "left": "0%" }, "slow");
       if (qualifiersCount === 4) {
         $(".answer").html("Why hell yes.<br>In fact, drink two!");
       }
@@ -76,13 +86,13 @@
       displayScrewItBtn();
     }
   }
-  
+
   function displayScrewItBtn() {
     $(".screwItBtn").show();
-    $(".screwItBtn").click(function() {
+    $(".screwItBtn").click(function () {
       $(".answer").html("Happy Winter!");
       $(".bottle").css("width", "100%");
-      $(".bottle").show().animate({"left": "0%"}, "slow");
+      $(".bottle").show().animate({ "left": "0%" }, "slow");
       $(".allQualifiers").hide();
       $(".screwItBtn").hide();
     });
@@ -91,7 +101,7 @@
   function styleQualifier(qualifier, conditionMet, callback) {
     $("." + qualifier).prepend('<i class="' + qualifier + 'Fa fa fa-snowflake-o fa-spin" aria-hidden="true"></i> ');
     $("." + qualifier).show();
-    setTimeout(function() {
+    setTimeout(function () {
       $("." + qualifier + "Fa").removeClass("fa-snowflake-o fa-spin");
       if (conditionMet) {
         $("." + qualifier + "Fa").addClass("fa-check-square-o").hide().fadeIn();
@@ -103,5 +113,4 @@
       callback();
     }, 1500);
   }
-
 })();

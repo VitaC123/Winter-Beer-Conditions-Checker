@@ -10,11 +10,12 @@ body {
   font-size: 16px;
   font-family: georgia, times;
   color: #e5982e;
+  overflow: hidden;
 }
 
 .introText {
   width: 80%;
-  margin: auto;
+  margin: 1.75em auto 0;
   font-size: 1.5em;
 }
 
@@ -26,7 +27,7 @@ body {
 
 .allQualifiers {
   display: none;
-  margin: 1em 0em 0em -2.3em;
+  margin: 1em 0 0 -2.3em;
   padding: 0.25em;
   list-style-type: none;
   font-size: 1.5em;
@@ -85,7 +86,6 @@ button:hover {
   height: 5px;
   width: 54px;
   margin-bottom: -1px;
-  border-radius: 2px;
   border-radius: 2px;
 }
 
@@ -176,7 +176,7 @@ button:hover {
 .whiteLine3 {
   height: 6px;
   width: 140px;
-  border-radius: 0px;
+  border-radius: 0;
 }
 
 .mainLabel {
